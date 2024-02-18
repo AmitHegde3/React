@@ -16,6 +16,24 @@ export default function TextForm(props) {
     let newText = text.toLowerCase();
     setText(newText);
   };
+
+  const handleClearClick = () => {
+    // console.log("Lowercase button was clicked. The orgonal text is: " + text);
+    setText("");
+  };
+
+  const handleCapitalizeClick = () => {
+    // console.log("Lowercase button was clicked. The orgonal text is: " + text);
+    let newText = text.split(" ");
+
+    for (let i = 0; i < newText.length;i++) {
+      newText[i] = newText[i].charAt(0).toUpperCase() + newText[i].slice(1).toLowerCase();
+    }
+
+    let words = newText.join(" ");
+    setText(words);
+  };
+
   const handleOnChange = (event) => {
     // console.log("On Change");
     setText(event.target.value);
@@ -29,7 +47,7 @@ export default function TextForm(props) {
           <textarea
             className="form-control"
             id="myBox"
-            rows="10"
+            rows="8"
             value={text}
             onChange={handleOnChange}
           ></textarea>
@@ -39,6 +57,12 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-primary ms-2" onClick={handleLowClick}>
           Convert to Lowercase
+        </button>
+        <button className="btn btn-primary ms-2" onClick={handleCapitalizeClick}>
+          Capitalized Case
+        </button>
+        <button className="btn btn-danger ms-2" onClick={handleClearClick}>
+          Clear Text
         </button>
       </div>
       <div className="container mt-3">
