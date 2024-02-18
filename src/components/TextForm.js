@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function TextForm(props) {
   // Hooks
   // const [variable, function]
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState("");
 
   const handleUpClick = () => {
     // console.log("Uppercase was clicked. The original text was: " + text);
@@ -41,7 +41,7 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{color:props.mode==="dark"?"white":"black"}}>
         <h2>{props.heading}</h2>
         <div className="mb-3">
           <textarea
@@ -49,7 +49,8 @@ export default function TextForm(props) {
             id="myBox"
             rows="8"
             value={text}
-            onChange={handleOnChange}
+          onChange={handleOnChange}
+          style={{backgroundColor:props.mode==="light"?"white":"grey",color:props.mode==="dark"?"white":"black" }}
           ></textarea>
         </div>
         <button className="btn btn-primary" onClick={handleUpClick}>
@@ -65,7 +66,7 @@ export default function TextForm(props) {
           Clear Text
         </button>
       </div>
-      <div className="container mt-3">
+      <div className="container mt-3" style={{ color: props.mode === "dark" ? "white" : "black" }}>
         <h2>Your Text Summary: </h2>
         <p>
           <b>
@@ -76,7 +77,7 @@ export default function TextForm(props) {
           Average reading time: {(text.split(" ").length - 1) * 0.008} minutes
         </p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Enter Something To Preview It Here"}</p>
       </div>
     </>
   );
