@@ -9,17 +9,20 @@ export default function TextForm(props) {
     // console.log("Uppercase was clicked. The original text was: " + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Text has been converted to Uppercase!", "success");
   };
 
   const handleLowClick = () => {
     // console.log("Lowercase button was clicked. The orgonal text is: " + text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Text has been converted to Lowercase!", "success");
   };
 
   const handleClearClick = () => {
     // console.log("Lowercase button was clicked. The orgonal text is: " + text);
     setText("");
+    props.showAlert("Text has been cleared!", "danger");
   };
 
   const handleCapitalizeClick = () => {
@@ -32,6 +35,7 @@ export default function TextForm(props) {
 
     let words = newText.join(" ");
     setText(words);
+    props.showAlert("Text has been Captalized!", "primary");
   };
 
   const handleOnChange = (event) => {
