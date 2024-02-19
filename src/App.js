@@ -25,10 +25,26 @@ function App() {
       setDarkMode("dark");
       document.body.style.backgroundColor = "#282f36";
       showAlert("Dark mode has been enabled", "success");
+      document.title = "Text Formatter - Dark Mode";
     } else {
       setDarkMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been Enabled", "success");
+      document.title = "Text Formatter - Home";
+    }
+  };
+
+  let greenMode = () => {
+    if (mode === "light") {
+      setDarkMode("dark");
+      document.body.style.backgroundColor = "#086108";
+      showAlert("Green mode has been enabled", "success");
+      document.title = "Text Formatter - Green Mode";
+    } else {
+      setDarkMode("light");
+      document.body.style.backgroundColor = "white";
+      showAlert("Light mode has been Enabled", "success");
+      document.title = "Text Formatter - Home";
     }
   };
   return (
@@ -40,6 +56,7 @@ function App() {
         aboutText="About"
         mode={mode}
         toggleMode={toggleMode}
+        greenMode={greenMode}
       />
       <Alert msg={alert} />
       <div className="container my-5">
@@ -47,6 +64,7 @@ function App() {
           showAlert={showAlert}
           heading="Enter the text to analyze"
           mode={mode}
+          greenMode={greenMode}
         />
       </div>
       {/* <About/> */}

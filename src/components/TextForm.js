@@ -29,8 +29,9 @@ export default function TextForm(props) {
     // console.log("Lowercase button was clicked. The orgonal text is: " + text);
     let newText = text.split(" ");
 
-    for (let i = 0; i < newText.length;i++) {
-      newText[i] = newText[i].charAt(0).toUpperCase() + newText[i].slice(1).toLowerCase();
+    for (let i = 0; i < newText.length; i++) {
+      newText[i] =
+        newText[i].charAt(0).toUpperCase() + newText[i].slice(1).toLowerCase();
     }
 
     let words = newText.join(" ");
@@ -43,9 +44,22 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
+  const countWord = (text) => {
+    let word = text.split(" ");
+    // console.log(word)
+
+    word = word.filter(word => word !== "");
+
+    return word.length;
+
+  }
+
   return (
     <>
-      <div className="container" style={{color:props.mode==="dark"?"white":"black"}}>
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <h2>{props.heading}</h2>
         <div className="mb-3">
           <textarea
@@ -53,8 +67,11 @@ export default function TextForm(props) {
             id="myBox"
             rows="8"
             value={text}
-          onChange={handleOnChange}
-          style={{backgroundColor:props.mode==="light"?"white":"grey",color:props.mode==="dark"?"white":"black" }}
+            onChange={handleOnChange}
+            style={{
+              backgroundColor: props.mode === "light" ? "white" : "grey",
+              color: props.mode === "dark" ? "white" : "black",
+            }}
           ></textarea>
         </div>
         <button className="btn btn-primary" onClick={handleUpClick}>
@@ -63,25 +80,31 @@ export default function TextForm(props) {
         <button className="btn btn-primary ms-2" onClick={handleLowClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary ms-2" onClick={handleCapitalizeClick}>
+        <button
+          className="btn btn-primary ms-2"
+          onClick={handleCapitalizeClick}
+        >
           Capitalized Case
         </button>
         <button className="btn btn-danger ms-2" onClick={handleClearClick}>
           Clear Text
         </button>
       </div>
-      <div className="container mt-3" style={{ color: props.mode === "dark" ? "white" : "black" }}>
+      <div
+        className="container mt-3"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <h2>Your Text Summary: </h2>
         <p>
           <b>
-            {text.split(" ").length - 1} words and {text.length} characters
+            {countWord(text)} words and {text.length} characters
           </b>
         </p>
         <p>
           Average reading time: {(text.split(" ").length - 1) * 0.008} minutes
         </p>
         <h2>Preview</h2>
-        <p>{text.length>0?text:"Enter Something To Preview It Here"}</p>
+        <p>{text.length > 0 ? text : "Enter Something To Preview It Here"}</p>
       </div>
     </>
   );
