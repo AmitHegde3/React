@@ -1,6 +1,7 @@
 import React from "react";
 // rfc -> react function based component
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 // impt ->import prop types
 
 export default function Navbar(props) {
@@ -31,7 +32,7 @@ export default function Navbar(props) {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <a className="nav-link" href="/about">
                 {props.aboutText}
               </a>
             </li>

@@ -5,7 +5,12 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
 
+// React Routers
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 function App() {
+  // Recat Router
+
   const [mode, setDarkMode] = useState("light"); // whether dark mode is enabled or not
 
   const [alert, setAlert] = useState(null);
@@ -47,6 +52,7 @@ function App() {
       document.title = "Text Formatter - Home";
     }
   };
+
   return (
     // This is a fragment ...<> </>....To wrap two or more components.
     <>
@@ -59,14 +65,35 @@ function App() {
         greenMode={greenMode}
       />
       <Alert msg={alert} />
-      <div className="container my-5">
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter the text to analyze"
-          mode={mode}
-          greenMode={greenMode}
-        />
-      </div>
+      {/* <div className="container my-5">
+        
+      <TextForm
+       showAlert={showAlert}
+       heading="Enter the text to analyze"
+       mode={mode}
+       greenMode={greenMode}
+     /> 
+   </div> */}
+
+      <BrowserRouter basename="/">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="container my-5">
+                <TextForm
+                  showAlert={showAlert}
+                  heading="Enter the text to analyze"
+                  mode={mode}
+                  greenMode={greenMode}
+                />
+              </div>
+            }
+          />
+          <Route path="/about" element={<About/>} />
+        </Routes>
+      </BrowserRouter>
+
       {/* <About/> */}
     </>
   );
