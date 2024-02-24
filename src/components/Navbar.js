@@ -1,7 +1,7 @@
 import React from "react";
 // rfc -> react function based component
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // impt ->import prop types
 
 export default function Navbar(props) {

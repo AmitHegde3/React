@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import About from "./components/About";
+// import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
 
 // React Routers
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   // Recat Router
@@ -65,7 +65,7 @@ function App() {
         greenMode={greenMode}
       />
       <Alert msg={alert} />
-      {/* <div className="container my-5">
+      <div className="container my-5">
         
       <TextForm
        showAlert={showAlert}
@@ -73,9 +73,9 @@ function App() {
        mode={mode}
        greenMode={greenMode}
      /> 
-   </div> */}
+   </div>
 
-      <BrowserRouter basename="/">
+      {/* <BrowserRouter basename="/">
         <Routes>
           <Route
             path="/"
@@ -92,7 +92,7 @@ function App() {
           />
           <Route path="/about" element={<About/>} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
 
       {/* <About/> */}
     </>
